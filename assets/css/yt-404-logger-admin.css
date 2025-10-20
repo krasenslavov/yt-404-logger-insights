@@ -10,32 +10,32 @@
 
 .yt-404-stats {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 20px;
 	margin: 20px 0;
-	flex-wrap: wrap;
 }
 
 .yt-404-stat-box {
 	background: #fff;
 	border: 1px solid #c3c4c7;
 	border-radius: 4px;
-	padding: 20px;
-	min-width: 200px;
-	text-align: center;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	min-width: 200px;
+	padding: 20px;
+	text-align: center;
 }
 
 .yt-404-stat-box h3 {
-	margin: 0 0 10px 0;
+	color: #2271b1;
 	font-size: 32px;
 	font-weight: 600;
-	color: #2271b1;
+	margin: 0 0 10px 0;
 }
 
 .yt-404-stat-box p {
-	margin: 0;
-	font-size: 14px;
 	color: #646970;
+	font-size: 14px;
+	margin: 0;
 }
 
 .yt-404-actions {
@@ -48,8 +48,8 @@
 
 .yt-404-clear-logs {
 	background: #b32d2e;
-	color: #fff;
 	border-color: #b32d2e;
+	color: #fff;
 }
 
 .yt-404-clear-logs:hover {
@@ -59,9 +59,9 @@
 }
 
 .yt-404-logger-wrap h2 {
-	margin-top: 30px;
-	margin-bottom: 15px;
 	font-size: 18px;
+	margin-bottom: 15px;
+	margin-top: 30px;
 }
 
 .yt-404-logger-wrap table {
@@ -74,17 +74,17 @@
 
 .yt-404-logger-wrap table code {
 	background: #f0f0f1;
-	padding: 2px 6px;
 	border-radius: 3px;
-	font-size: 12px;
 	color: #2271b1;
+	font-size: 12px;
+	padding: 2px 6px;
 }
 
 .yt-404-delete-log {
 	font-size: 12px;
-	padding: 4px 8px;
 	height: auto;
 	line-height: 1.4;
+	padding: 4px 8px;
 }
 
 .yt-404-logger-wrap tr.deleting {
@@ -98,8 +98,8 @@
 }
 
 .yt-404-logger-wrap tr.deleted td {
-	text-decoration: line-through;
 	color: #999;
+	text-decoration: line-through;
 }
 
 @media screen and (max-width: 782px) {
@@ -112,9 +112,9 @@
 	}
 
 	.yt-404-actions .button {
-		margin-bottom: 10px;
 		display: block;
-		width: 100%;
+		margin-bottom: 10px;
 		text-align: center;
+		width: 100%;
 	}
 }
