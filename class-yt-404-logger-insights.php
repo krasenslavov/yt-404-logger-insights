@@ -3,7 +3,7 @@
  * Plugin Name: YT 404 Logger & Insights
  * Plugin URI: https://github.com/krasenslavov/yt-404-logger-insights
  * Description: Logs 404 URLs and shows top missing pages with optional auto-redirect for common repeats.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author: Krasen Slavov
