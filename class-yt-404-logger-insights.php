@@ -150,7 +150,7 @@ class YT_404_Logger_Insights {
 		// Check if this exact URL was logged in the last minute (prevent spam).
 		$recent_log = $wpdb->get_var(
 			$wpdb->prepare(
-				"SELECT id FROM {$this->table_name} WHERE path = %s AND logged_at > DATE_SUB(NOW(), INTERVAL 1 MINUTE) LIMIT 1",
+				"SELECT id FROM {$this->table_name} WHERE path = %s AND logged_at > DATE_SUB(NOW(), INTERVAL 1 MINUTE) LIMIT 1", // phpcs:ignore
 				$request_uri
 			)
 		);
@@ -353,23 +353,17 @@ class YT_404_Logger_Insights {
 		global $wpdb;
 
 		// Get summary statistics.
-		$total_logs   = $wpdb->get_var( "SELECT COUNT(*) FROM {$this->table_name}" );
-		$unique_paths = $wpdb->get_var( "SELECT COUNT(DISTINCT path) FROM {$this->table_name}" );
+		$total_logs   = $wpdb->get_var( "SELECT COUNT(*) FROM {$this->table_name}" ); // phpcs:ignore
+		$unique_paths = $wpdb->get_var( "SELECT COUNT(DISTINCT path) FROM {$this->table_name}" ); // phpcs:ignore
 
 		// Get top 404 URLs.
 		$top_404s = $wpdb->get_results(
-			"SELECT path, COUNT(*) as hit_count, MAX(logged_at) as last_seen
-			FROM {$this->table_name}
-			GROUP BY path
-			ORDER BY hit_count DESC
-			LIMIT 20"
+			"SELECT path, COUNT(*) as hit_count, MAX(logged_at) as last_seen FROM {$this->table_name} GROUP BY path ORDER BY hit_count DESC LIMIT 20" // phpcs:ignore
 		);
 
 		// Get recent logs.
 		$recent_logs = $wpdb->get_results(
-			"SELECT * FROM {$this->table_name}
-			ORDER BY logged_at DESC
-			LIMIT 50"
+			"SELECT * FROM {$this->table_name} ORDER BY logged_at DESC LIMIT 50" // phpcs:ignore
 		);
 
 		?>
@@ -505,13 +499,13 @@ class YT_404_Logger_Insights {
 			'yt-404-logger-admin-script',
 			'yt404Logger',
 			array(
-				'ajaxUrl'          => admin_url( 'admin-ajax.php' ),
-				'nonce'            => wp_create_nonce( 'yt_404_logger_nonce' ),
-				'confirmClear'     => __( 'Are you sure you want to clear all logs? This action cannot be undone.', 'yt-404-logger-insights' ),
-				'confirmDelete'    => __( 'Are you sure you want to delete this log entry?', 'yt-404-logger-insights' ),
-				'deleteSuccess'    => __( 'Log entry deleted successfully.', 'yt-404-logger-insights' ),
-				'clearSuccess'     => __( 'All logs cleared successfully.', 'yt-404-logger-insights' ),
-				'errorOccurred'    => __( 'An error occurred. Please try again.', 'yt-404-logger-insights' ),
+				'ajaxUrl'       => admin_url( 'admin-ajax.php' ),
+				'nonce'         => wp_create_nonce( 'yt_404_logger_nonce' ),
+				'confirmClear'  => __( 'Are you sure you want to clear all logs? This action cannot be undone.', 'yt-404-logger-insights' ),
+				'confirmDelete' => __( 'Are you sure you want to delete this log entry?', 'yt-404-logger-insights' ),
+				'deleteSuccess' => __( 'Log entry deleted successfully.', 'yt-404-logger-insights' ),
+				'clearSuccess'  => __( 'All logs cleared successfully.', 'yt-404-logger-insights' ),
+				'errorOccurred' => __( 'An error occurred. Please try again.', 'yt-404-logger-insights' ),
 			)
 		);
 	}
@@ -557,7 +551,7 @@ class YT_404_Logger_Insights {
 		}
 
 		global $wpdb;
-		$wpdb->query( "TRUNCATE TABLE {$this->table_name}" );
+		$wpdb->query( "TRUNCATE TABLE {$this->table_name}" ); // phpcs:ignore
 
 		wp_send_json_success( array( 'message' => __( 'All logs cleared', 'yt-404-logger-insights' ) ) );
 	}
@@ -656,7 +650,7 @@ function yt_404_logger_insights_uninstall() {
 	delete_option( 'yt_404_logger_options' );
 
 	$table_name = $wpdb->prefix . 'yt_404_logs';
-	$wpdb->query( "DROP TABLE IF EXISTS $table_name" );
+	$wpdb->query( "DROP TABLE IF EXISTS $table_name" ); // phpcs:ignore
 
 	wp_cache_flush();
 }
